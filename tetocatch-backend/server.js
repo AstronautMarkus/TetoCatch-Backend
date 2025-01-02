@@ -18,20 +18,14 @@ app.post('/reel', async (req, res) => {
   
     try {
       const data = await igdl(url);
-  
-      // Filtra los datos relevantes
-      const response = {
-        title: data.title || 'No Title',
-        thumbnail: data.thumbnail || '',
-        downloadLink: data.url || '',
-      };
-  
-      res.json(response);
+      console.log('Raw Data:', data); // Return btch-downloader data
+      res.json(data); // Return raw response
     } catch (error) {
       console.error('Error downloading reel:', error);
       res.status(500).json({ error: 'Failed to fetch reel data' });
     }
   });
+  
   
   
 
